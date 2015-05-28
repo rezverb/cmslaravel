@@ -7,11 +7,10 @@ class Page extends Model {
 	//
 
 	protected $fillable = [
-		'header',
+		'nav_title',
 		'title',
-		'urls',
-		'smalldesc',
-		'content',
+		'slug',
+		'body',
 		'active'
 
 

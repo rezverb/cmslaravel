@@ -52,11 +52,27 @@
 			</div>
 		</div>
 	</nav>
-
+<div class="container">
 	@yield('content')
-
+</div>
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    {!! Html::script('js/ckeditor/ckeditor.js') !!}
+    <script type="text/javascript">
+       CKEDITOR.replace( 'editor1',
+               {
+                   filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
+                   filebrowserImageBrowseUrl : '{{ url('/elfinder') }}',
+                   filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?type=Flash',
+                   filebrowserUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                   filebrowserImageUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                   filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+               }
+       );
+
+
+
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -16,13 +16,14 @@ class CreatePagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('urls');
+			$table->timestamp('deleted_at')->nullable();
 			$table->string('title');
-			$table->text('smalldesc');
-			$table->text('content');
-			$table->string('header')->nullable();
+			$table->string('nav_title');
+			$table->text('slug');
+			$table->text('body');
 			$table->boolean('active',1);
 			$table->string('image')->nullable();
+
 
 		});
 	}

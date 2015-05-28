@@ -3,9 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Page;
+use Storage;
 use Illuminate\Html\FormFacade;
+use Illuminate\Html\HtmlFacade;
 //use Illuminate\Http\Request;
 use Request;
+
 
 
 class PagesController extends Controller {
@@ -15,6 +18,13 @@ class PagesController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function test2()
+	{
+		$disk = Storage::disk('local')->put('file.doc', "this is a test");
+		dd($disk);
+		$dir = "";
+		//return view('vendor.elfinder.elfinder',compact('dir'));
+	}
 	public function index()
 	{
 		//
@@ -42,11 +52,11 @@ class PagesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Requests\CreatePageRequest $request)
 	{
 
 		$pages = new Page();
-		$pages->create(Request::all());
+		$pages->create($request->all());
 		return redirect('page');
 	}
 
@@ -80,10 +90,11 @@ class PagesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Requests\CreatePageRequest $request)
 	{
-		$page = new Page();
-		$page->update(Request::all());
+
+		$page =  Page::findOrFail($id);
+		$page->update($request->all());
 		return redirect('page');
 	}
 

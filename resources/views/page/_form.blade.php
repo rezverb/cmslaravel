@@ -5,25 +5,20 @@
 
 
 <div class='form-group'>
-{!! Form::label('header','Header') !!}
-{!! Form::text('header',null,['class'=>'form-control'])  !!}
+{!! Form::label('nav_title','Nav Title') !!}
+{!! Form::text('nav_title',null,['class'=>'form-control'])  !!}
 </div>
 
 <div class='form-group'>
-{!! Form::label('urls','Page Url') !!}
-{!! Form::text('urls',null,['class'=>'form-control'])  !!}
+{!! Form::label('slug','Page Slug') !!}
+{!! Form::text('slug',null,['class'=>'form-control'])  !!}
 </div>
 
 
-<div class='form-group'>
-{!! Form::label('smalldesc','Brief Description') !!}
-{!! Form::textarea('smalldesc',null,['class'=>'form-control']) !!}
-</div>
-
 
 <div class='form-group'>
-{!! Form::label('content','Page Content') !!}
-{!! Form::textarea('content',null,['class'=>'form-control']) !!}
+{!! Form::label('body','Page Content') !!}
+{!! Form::textarea('body',null,['class'=>'form-control','name'=>'editor1']) !!}
 </div>
 
 <div class='form-group'>
@@ -35,4 +30,16 @@
 <div class='form-group'>
 {!! Form::submit($submitbuttontext,['class'=>'btn btn-primary form-control']) !!}
 </div>
+
+@if($errors->any())
+
+    <ul class="alert alert-danger alert-dismissable">
+
+   @foreach($errors->all() as $error)
+       <li>{{$error}}</li>
+
+   @endforeach
+    </ul>
+        @endif
+
 

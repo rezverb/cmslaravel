@@ -136,6 +136,8 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
+		'Barryvdh\Elfinder\ElfinderServiceProvider',
+
 
 		/*
 		 * Application Service Providers...

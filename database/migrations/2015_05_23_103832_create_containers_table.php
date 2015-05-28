@@ -17,7 +17,7 @@ class CreateContainersTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('title');
-			$table->string('url')->nullable();
+			$table->string('description')->nullable();
 			$table->boolean('active')->default(1);
 		});
 
