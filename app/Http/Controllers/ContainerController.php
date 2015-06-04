@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\Container;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Request;
 
 class ContainerController extends Controller {
 
@@ -14,7 +15,8 @@ class ContainerController extends Controller {
 	 */
 	public function index()
 	{
-
+		$containers = Container::all();
+		return view('container.index',compact('containers'));
 
 	}
 
@@ -25,6 +27,7 @@ class ContainerController extends Controller {
 	 */
 	public function create()
 	{
+
 		return view('container.create');
 	}
 
@@ -33,9 +36,11 @@ class ContainerController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Requests\CreateContainerRequest $request)
 	{
-		//
+		Container::create($request->all());
+		redirect('container.index');
+
 	}
 
 	/**
@@ -57,7 +62,8 @@ class ContainerController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+			$container = Container::FindorFail($id);
+			return view('container.edit',compact('container'));
 	}
 
 	/**
@@ -66,9 +72,12 @@ class ContainerController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id,Requests\CreateContainerRequest $request)
 	{
-		//
+			$container = Container::FindorFail($id);
+			$container->update($request->all());
+			return redirect('cont');
+
 	}
 
 	/**

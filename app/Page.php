@@ -16,4 +16,10 @@ class Page extends Model {
 
 	];
 
+
+	function container()
+	{
+		return $this->belongsToMany('App\Container');
+	}
+
 }

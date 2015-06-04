@@ -23,7 +23,6 @@ class PagesController extends Controller {
 		$disk = Storage::disk('local')->put('file.doc', "this is a test");
 		dd($disk);
 		$dir = "";
-		//return view('vendor.elfinder.elfinder',compact('dir'));
 	}
 	public function index()
 	{
@@ -44,7 +43,7 @@ class PagesController extends Controller {
 
 		$pages = array();
 		return view('page.create');
-		return view('page.create',compact('pages'));
+
 	}
 
 	/**

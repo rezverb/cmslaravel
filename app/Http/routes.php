@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -23,16 +24,3 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
-Route::get('elfinder', '\Barryvdh\Elfinder\ElfinderController@showIndex');
-
-Route::get('test1/{id}', '\Barryvdh\Elfinder\ElfinderController@showPopup');
-Route::get('test2', 'PagesController@test2');
-
-Route::get('glide/{path}', function($path){
-	$server = \League\Glide\ServerFactory::create([
-		'source' => app('filesystem')->disk('public')->getDriver(),
-		'cache' => storage_path('glide'),
-	]);
-	return $server->getImageResponse($path, Input::query());
-})->where('path', '.+');

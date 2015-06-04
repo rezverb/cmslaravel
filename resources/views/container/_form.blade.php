@@ -8,8 +8,17 @@
 </div>
 <div class="form-group">
 {!! Form::label('active','Active') !!}
-{!! Form::text('active',[1=>'Active',0=>'In Active'],['class'=>'form-control']) !!}
+{!! Form::select('active',[1=>'Active',0=>'InActive'],1,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
-{!!Form::submit($submitvariable,['class'='btn btn-primary form-control'])!!}
+{!! Form::submit($submitvariable,['class'=>'btn btn-primary form-control']) !!}
 </div>
+
+@if($errors->any())
+<ul class="alert alert-danger alert-dismissable">
+    @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+    @endforeach
+</ul>
+@endif
+

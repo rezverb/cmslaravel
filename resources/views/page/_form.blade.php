@@ -18,7 +18,7 @@
 
 <div class='form-group'>
 {!! Form::label('body','Page Content') !!}
-{!! Form::textarea('body',null,['class'=>'form-control','name'=>'editor1']) !!}
+{!! Form::textarea('body',null,['class'=>'form-control']) !!}
 </div>
 
 <div class='form-group'>
@@ -43,3 +43,15 @@
         @endif
 
 
+{!! Html::script('packages/ckeditor/ckeditor.js') !!}
+
+
+
+<script type="text/javascript">
+    var editor =CKEDITOR.replace( 'body',
+            {
+                filebrowserBrowseUrl : "{{url('elfinder')}}",
+                filebrowserImageBrowseUrl : "{{url('elfinder')}}"
+            }
+    );
+</script>
